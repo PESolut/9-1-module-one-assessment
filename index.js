@@ -130,7 +130,59 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  // initalize the accumulator object
+  let accumulator = {}
+  accumulator['G'] = 0
+  accumulator['PG'] = 0
+  accumulator['PG-13'] = 0
+
+  // guard clause
+  if (!movies.length){
+    return {}
+  } else {
+    for (let i = 0; i < movies.length; i++) {
+      if(movies[i].rated === 'PG'){
+        accumulator.PG += 1
+      }
+      if(movies[i].rated === 'PG-13'){
+        accumulator['PG-13'] += 1
+      }
+      if(movies[i].rated === 'G'){
+        accumulator.G += 1
+      }
+      // accumulator [movies[i].rated] = movies[i].rated
+    }
+      if(accumulator['PG-13'] === 0){
+        delete accumulator['PG-13']
+    }
+    if(accumulator['PG'] === 0){
+      delete accumulator['PG']
+    }
+    if(accumulator['G'] === 0){
+      delete accumulator['G']
+    }
+    console.log(accumulator)
+    // if (accumulator[PG] === 0){
+    //   delete accumulator.PG
+    // }
+    // if (accumulator[G] === 0){
+    //   delete accumulator.PG
+    // }
+    // if (accumulator[PG-13] === 0){
+    //   delete accumulator.PG
+    // }
+    }
+    return accumulator
+    }
+   
+
+ 
+  // loop through our object ( we are accessing movies.rated )
+  
+
+  // store each sub object into our accumulator object
+
 
 /**
  * findById()
@@ -146,7 +198,22 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  accumulator = {}
+  if(!movies.length){
+    return null
+  } else {
+  for (const movie of movies) {
+    if (movie.imdbID === id){
+      accumulator = movie
+    }
+    // } else if (movie.imdbID !== id){
+    //   return null
+    // }
+  }
+}
+return accumulator
+}
 
 /**
  * filterByGenre()
@@ -168,7 +235,23 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+  let accumulator = []
+  if (!movies.length){
+    return []
+  } else {
+    for (const movie of movies) {
+      let splitArr
+      splitArr = movie.genre.split(',')
+      if (splitArr.includes(genre)){
+        console.log('arr')
+        accumulator.push(movie)
+      }
+      
+    }
+  return accumulator
+}
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -192,7 +275,17 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  let arr = []
+  for (const movie of movies) {
+    let splitReleased = movie.released.split(' ')
+    console.log(splitReleased[2])
+    if(splitReleased[2] <= year){
+      arr.push (movie)
+    }
+  }
+  return arr
+}
 
 /**
  * getBiggestBoxOfficeMovie()
