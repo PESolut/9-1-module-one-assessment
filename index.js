@@ -28,7 +28,19 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  //initalize our accumulator
+  let moviesArr = []
+  // guard clause; if movies is empty short cirtcuit the script here, return []
+  if (!movies.length){
+    return []
+  } else {
+
+  }
+  // iterate througy the our array of objevts
+  // through each iteration access movies.title
+  // push the title into our accumulator array
+}
 
 /**
  * getHighestMetascore()
