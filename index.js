@@ -305,6 +305,9 @@ function getBiggestBoxOfficeMovie(movies) {
   let actualNumber = ''
   let actualNumAfterTakingOffSymbol = 0
 
+  if (!movies.length){
+    return null
+  } else {
   for(const movie of movies){
     splitNumber = movie.boxOffice.split(',')
     actualNumber = splitNumber[0] + splitNumber[1] + splitNumber[2]
@@ -316,6 +319,7 @@ function getBiggestBoxOfficeMovie(movies) {
       accumulatorName = movie.title
     }
   }
+}
   return accumulatorName
 }
 
