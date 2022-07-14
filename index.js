@@ -35,11 +35,14 @@ function getAllMovieTitles(movies) {
   if (!movies.length){
     return []
   } else {
-
+    for(const movie of movies){
+      moviesArr.push(movie.title)
+    }
   }
   // iterate througy the our array of objevts
   // through each iteration access movies.title
   // push the title into our accumulator array
+  return moviesArr
 }
 
 /**
